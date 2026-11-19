@@ -1,0 +1,33 @@
+spring:
+  mail:
+    host: smtp.office365.com
+    port: 587
+    username: noreply@skybanksl.com
+    password: D.890811522623uf
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+
+  application:
+    name: corebanking
+server:
+  port: 9088
+
+
+
+api:
+  wallet: 4a74-964b458bc3718a92
+  authorization: "Basic dXJqbnM1NG1rbDo0d2Y0NXlnZnNjdmNnaGtvcHRyZXdzeGN2eDg="
+
+
+
+logging:
+  level:
+    org.springframework.web.client.DefaultRestClient: DEBUG
+    org.springframework.http.converter: DEBUG
