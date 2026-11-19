@@ -1,17 +1,22 @@
 spring:
+  config:
+    import: optional:file:.env[.properties]
   mail:
-    host: smtp.office365.com
-    port: 587
-    username: noreply@skybanksl.com
-    password: D.890811522623uf
+    host: ${SMTP_HOST}
+    port: ${SMTP_PORT}
+    username: ${SMTP_USER}
+    password: ${SMTP_PASSWORD}
+    from: ${SMTP_FROM}
     properties:
       mail:
         smtp:
           auth: true
           starttls:
-            enable: true
+            enable: ${SMTP_STARTTLS}
+          ssl:
+            enable: ${SMTP_SSL}
           connectiontimeout: 5000
-          timeout: 3000
+          timeout: 5000
           writetimeout: 5000
 
   application:

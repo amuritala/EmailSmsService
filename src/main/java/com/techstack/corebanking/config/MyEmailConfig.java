@@ -23,6 +23,12 @@ public class MyEmailConfig {
     @Value("${spring.mail.password}")
     private String password;
 
+    @Value("${spring.mail.properties.mail.smtp.starttls.enable}")
+    private boolean startTls;
+
+    @Value("${spring.mail.properties.mail.smtp.ssl.enable}")
+    private boolean ssl;
+
     @Bean
     public JavaMailSender javaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
@@ -31,22 +37,16 @@ public class MyEmailConfig {
         mailSender.setUsername(username);
         mailSender.setPassword(password);
 
-        // Set underlying Jakarta Mail / SMTP properties
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        /**
-        //props.put("mail.smtp.ssl.checkserveridentity", "true");
-        props.put("mail.smtp.ssl.protocols", "TLSv1.2 TLSv1.3");
-        props.put("mail.properties.mail.smtp.ssl.enable", "false");
-        props.put("mail.properties.mail.debug", "true");
-
-        // Recommended timeouts (in milliseconds) to prevent hanging threads
+        props.put("mail.smtp.starttls.enable", Boolean.toString(startTls));
+        props.put("mail.smtp.starttls.required", Boolean.toString(startTls));
+        props.put("mail.smtp.ssl.enable", Boolean.toString(ssl));
+        props.put("mail.smtp.ssl.checkserveridentity", "true");
         props.put("mail.smtp.connectiontimeout", "5000");
         props.put("mail.smtp.timeout", "5000");
         props.put("mail.smtp.writetimeout", "5000");
- **/
         return mailSender;
     }
 }
