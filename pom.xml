@@ -108,6 +108,41 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+
+				<groupId>com.sun.xml.ws</groupId>
+
+				<artifactId>jaxws-maven-plugin</artifactId>
+
+				<version>3.0.0</version>
+
+				<executions>
+
+					<execution>
+
+						<goals>
+
+							<goal>wsimport</goal>
+
+						</goals>
+
+					</execution>
+
+				</executions>
+
+				<configuration>
+					<packageName>com.techstack.corebanking.stub</packageName>
+					<wsdlUrls>
+						<wsdlUrl>http://10.1.12.71:8101/FCUBSCustomerService/FCUBSCustomerService?WSDL</wsdlUrl>
+					</wsdlUrls>
+					<sourceDestDir>${project.basedir}/src/main/java</sourceDestDir>
+					<destDir>${project.basedir}/src/main/java</destDir>
+					<extension>true</extension>
+
+				</configuration>
+
+			</plugin>
+
 		</plugins>
 	</build>
 

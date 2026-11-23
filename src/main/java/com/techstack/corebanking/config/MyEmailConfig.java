@@ -1,3 +1,6 @@
+
+/**
+
 package com.techstack.corebanking.config;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -50,3 +53,4 @@ public class MyEmailConfig {
         return mailSender;
     }
 }
+**/
